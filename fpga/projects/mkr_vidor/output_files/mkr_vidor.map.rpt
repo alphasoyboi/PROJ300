@@ -1,5 +1,5 @@
 Analysis & Synthesis report for mkr_vidor
-Thu Feb 15 16:27:33 2024
+Thu Feb 15 16:43:49 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -14,11 +14,11 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: Top-level Entity: |mkr_vidor
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
- 13. Analysis & Synthesis Suppressed Messages
+  9. Inverted Register Statistics
+ 10. Parameter Settings for User Entity Instance: Top-level Entity: |mkr_vidor
+ 11. Post-Synthesis Netlist Statistics for Top Partition
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -45,15 +45,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Feb 15 16:27:33 2024       ;
+; Analysis & Synthesis Status        ; Successful - Thu Feb 15 16:43:49 2024       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; mkr_vidor                                   ;
 ; Top-level Entity Name              ; mkr_vidor                                   ;
 ; Family                             ; Cyclone 10 LP                               ;
-; Total logic elements               ; 0                                           ;
-;     Total combinational functions  ; 0                                           ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
+; Total logic elements               ; 48                                          ;
+;     Total combinational functions  ; 48                                          ;
+;     Dedicated logic registers      ; 37                                          ;
+; Total registers                    ; 37                                          ;
 ; Total pins                         ; 65                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -174,35 +174,36 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+------------------------------+----------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                      ;
-+---------------------------------------------+--------------------+
-; Resource                                    ; Usage              ;
-+---------------------------------------------+--------------------+
-;                                             ;                    ;
-; Total combinational functions               ; 0                  ;
-; Logic element usage by number of LUT inputs ;                    ;
-;     -- 4 input functions                    ; 0                  ;
-;     -- 3 input functions                    ; 0                  ;
-;     -- <=2 input functions                  ; 0                  ;
-;                                             ;                    ;
-; Logic elements by mode                      ;                    ;
-;     -- normal mode                          ; 0                  ;
-;     -- arithmetic mode                      ; 0                  ;
-;                                             ;                    ;
-; Total registers                             ; 0                  ;
-;     -- Dedicated logic registers            ; 0                  ;
-;     -- I/O registers                        ; 0                  ;
-;                                             ;                    ;
-; I/O pins                                    ; 65                 ;
-;                                             ;                    ;
-; Embedded Multiplier 9-bit elements          ; 0                  ;
-;                                             ;                    ;
-; Maximum fan-out node                        ; sdram_dq[0]~output ;
-; Maximum fan-out                             ; 1                  ;
-; Total fan-out                               ; 104                ;
-; Average fan-out                             ; 0.62               ;
-+---------------------------------------------+--------------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 48        ;
+;                                             ;           ;
+; Total combinational functions               ; 48        ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 11        ;
+;     -- 3 input functions                    ; 1         ;
+;     -- <=2 input functions                  ; 36        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 24        ;
+;     -- arithmetic mode                      ; 24        ;
+;                                             ;           ;
+; Total registers                             ; 37        ;
+;     -- Dedicated logic registers            ; 37        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 65        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 37        ;
+; Total fan-out                               ; 373       ;
+; Average fan-out                             ; 1.47      ;
++---------------------------------------------+-----------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -210,7 +211,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; |mkr_vidor                 ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 65   ; 0            ; |mkr_vidor          ; mkr_vidor   ; work         ;
+; |mkr_vidor                 ; 48 (48)             ; 37 (37)                   ; 0           ; 0            ; 0       ; 0         ; 65   ; 0            ; |mkr_vidor          ; mkr_vidor   ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -220,14 +221,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 37    ;
+; Number of registers using Synchronous Clear  ; 25    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 33    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 12    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; leds[0]                                ; 2       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
 
 
 +---------------------------------------------------------------------------+
@@ -246,13 +257,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 65                          ;
+; cycloneiii_ff         ; 37                          ;
+;     CLR SCLR          ; 25                          ;
+;     ENA               ; 4                           ;
+;     ENA CLR           ; 8                           ;
 ; cycloneiii_io_obuf    ; 39                          ;
-; cycloneiii_lcell_comb ; 1                           ;
-;     normal            ; 1                           ;
+; cycloneiii_lcell_comb ; 49                          ;
+;     arith             ; 24                          ;
+;         2 data inputs ; 24                          ;
+;     normal            ; 25                          ;
 ;         0 data inputs ; 1                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 10                          ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 11                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 0.00                        ;
-; Average LUT depth     ; 0.00                        ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.10                        ;
 +-----------------------+-----------------------------+
 
 
@@ -271,14 +292,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Feb 15 16:27:21 2024
+    Info: Processing started: Thu Feb 15 16:43:37 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mkr_vidor -c mkr_vidor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file /users/tsmale/documents/github/proj300/fpga/rtl/mkr_vidor.sv
     Info (12023): Found entity 1: mkr_vidor File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 1
 Info (12127): Elaborating entity "mkr_vidor" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at mkr_vidor.sv(25): object "leds" assigned a value but never read File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 25
+Warning (10230): Verilog HDL assignment warning at mkr_vidor.sv(34): truncated value with size 32 to match size of target (25) File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 34
+Warning (10230): Verilog HDL assignment warning at mkr_vidor.sv(39): truncated value with size 32 to match size of target (4) File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 39
 Warning (10034): Output port "sdram_addr" at mkr_vidor.sv(8) has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 8
 Warning (10034): Output port "sdram_ba" at mkr_vidor.sv(9) has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 9
 Warning (10034): Output port "sdram_dqm" at mkr_vidor.sv(14) has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 14
@@ -289,6 +311,15 @@ Warning (10034): Output port "sdram_cke" at mkr_vidor.sv(11) has no driver File:
 Warning (10034): Output port "sdram_cs_n" at mkr_vidor.sv(12) has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 12
 Warning (10034): Output port "sdram_ras_n" at mkr_vidor.sv(15) has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 15
 Warning (10034): Output port "sdram_we_n" at mkr_vidor.sv(16) has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 16
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "mkr_gpio[0]" and its non-tri-state driver. File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13035): Inserted always-enabled tri-state buffer between "mkr_gpio[1]" and its non-tri-state driver. File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13035): Inserted always-enabled tri-state buffer between "mkr_gpio[2]" and its non-tri-state driver. File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13035): Inserted always-enabled tri-state buffer between "mkr_gpio[3]" and its non-tri-state driver. File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13035): Inserted always-enabled tri-state buffer between "mkr_gpio[4]" and its non-tri-state driver. File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13035): Inserted always-enabled tri-state buffer between "mkr_gpio[5]" and its non-tri-state driver. File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13035): Inserted always-enabled tri-state buffer between "mkr_gpio[6]" and its non-tri-state driver. File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13035): Inserted always-enabled tri-state buffer between "mkr_gpio[7]" and its non-tri-state driver. File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
 Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "sdram_dq[0]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 13
     Warning (13040): bidirectional pin "sdram_dq[1]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 13
@@ -314,14 +345,6 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "mkr_analog[4]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 19
     Warning (13040): bidirectional pin "mkr_analog[5]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 19
     Warning (13040): bidirectional pin "mkr_analog[6]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 19
-    Warning (13040): bidirectional pin "mkr_gpio[0]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
-    Warning (13040): bidirectional pin "mkr_gpio[1]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
-    Warning (13040): bidirectional pin "mkr_gpio[2]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
-    Warning (13040): bidirectional pin "mkr_gpio[3]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
-    Warning (13040): bidirectional pin "mkr_gpio[4]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
-    Warning (13040): bidirectional pin "mkr_gpio[5]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
-    Warning (13040): bidirectional pin "mkr_gpio[6]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
-    Warning (13040): bidirectional pin "mkr_gpio[7]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
     Warning (13040): bidirectional pin "mkr_gpio[8]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
     Warning (13040): bidirectional pin "mkr_gpio[9]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
     Warning (13040): bidirectional pin "mkr_gpio[10]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
@@ -329,6 +352,17 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "mkr_gpio[12]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
     Warning (13040): bidirectional pin "mkr_gpio[13]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
     Warning (13040): bidirectional pin "mkr_gpio[14]" has no driver File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+Info (13000): Registers with preset signals will power-up high File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 34
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "mkr_gpio[0]~synth" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13010): Node "mkr_gpio[1]~synth" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13010): Node "mkr_gpio[2]~synth" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13010): Node "mkr_gpio[3]~synth" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13010): Node "mkr_gpio[4]~synth" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13010): Node "mkr_gpio[5]~synth" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13010): Node "mkr_gpio[6]~synth" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
+    Warning (13010): Node "mkr_gpio[7]~synth" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 21
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "sam_int_out" is stuck at GND File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 5
     Warning (13410): Pin "sdram_clk" is stuck at GND File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 7
@@ -353,27 +387,20 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "sdram_dqm[1]" is stuck at GND File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 14
     Warning (13410): Pin "sdram_ras_n" is stuck at GND File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 15
     Warning (13410): Pin "sdram_we_n" is stuck at GND File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 16
-Info (144001): Generated suppressed messages file C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/projects/mkr_vidor/output_files/mkr_vidor.map.smsg
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 3 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 2
-    Warning (15610): No output dependent on input pin "reset_n" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 3
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "sam_int_in" File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 4
-Info (21057): Implemented 65 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 113 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 23 output pins
     Info (21060): Implemented 39 bidirectional pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 80 warnings
-    Info: Peak virtual memory: 4745 megabytes
-    Info: Processing ended: Thu Feb 15 16:27:33 2024
+    Info (21061): Implemented 48 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 89 warnings
+    Info: Peak virtual memory: 4750 megabytes
+    Info: Processing ended: Thu Feb 15 16:43:49 2024
     Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:17
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/projects/mkr_vidor/output_files/mkr_vidor.map.smsg.
 
 

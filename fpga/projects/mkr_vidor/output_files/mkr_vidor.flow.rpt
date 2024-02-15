@@ -1,5 +1,5 @@
 Flow report for mkr_vidor
-Thu Feb 15 16:28:02 2024
+Thu Feb 15 16:44:19 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Feb 15 16:28:02 2024       ;
+; Flow Status                        ; Successful - Thu Feb 15 16:44:19 2024       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; mkr_vidor                                   ;
 ; Top-level Entity Name              ; mkr_vidor                                   ;
 ; Family                             ; Cyclone 10 LP                               ;
 ; Device                             ; 10CL016YU256C8G                             ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 0 / 15,408 ( 0 % )                          ;
-;     Total combinational functions  ; 0 / 15,408 ( 0 % )                          ;
-;     Dedicated logic registers      ; 0 / 15,408 ( 0 % )                          ;
-; Total registers                    ; 0                                           ;
+; Total logic elements               ; 48 / 15,408 ( < 1 % )                       ;
+;     Total combinational functions  ; 48 / 15,408 ( < 1 % )                       ;
+;     Dedicated logic registers      ; 37 / 15,408 ( < 1 % )                       ;
+; Total registers                    ; 37                                          ;
 ; Total pins                         ; 65 / 163 ( 40 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 516,096 ( 0 % )                         ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/15/2024 16:27:25 ;
+; Start date & time ; 02/15/2024 16:43:41 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; mkr_vidor           ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 53447165679064.170801444514512         ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 53447165679064.170801542113968         ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -103,12 +103,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 4731 MB             ; 00:00:17                           ;
-; Fitter               ; 00:00:08     ; 1.0                     ; 5430 MB             ; 00:00:04                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 4689 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:05     ; 1.0                     ; 4769 MB             ; 00:00:02                           ;
-; EDA Netlist Writer   ; 00:00:05     ; 1.0                     ; 4640 MB             ; 00:00:01                           ;
-; Total                ; 00:00:36     ; --                      ; --                  ; 00:00:25                           ;
+; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 4750 MB             ; 00:00:17                           ;
+; Fitter               ; 00:00:09     ; 1.0                     ; 5472 MB             ; 00:00:05                           ;
+; Assembler            ; 00:00:06     ; 1.0                     ; 4690 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.0                     ; 4776 MB             ; 00:00:02                           ;
+; EDA Netlist Writer   ; 00:00:05     ; 1.0                     ; 4641 MB             ; 00:00:01                           ;
+; Total                ; 00:00:37     ; --                      ; --                  ; 00:00:26                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

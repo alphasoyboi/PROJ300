@@ -20,24 +20,27 @@ module mkr_vidor #(parameter DELAY = 24000000) (
   inout [14:0] mkr_gpio
 );
 
-int unsigned cnt = 0;
-int unsigned i = 0;
-logic [7:0] leds = 8'h00;
-assign leds = mkr_gpio[7:0];
+logic [24:0] cnt = 0;
+logic [3:0] i = 0;
+logic [7:0] leds;
+assign mkr_gpio[7:0] = leds;
 
 always_ff @(posedge clk or negedge reset_n) begin
   if (!reset_n) begin
-    
+    cnt <= 0;
+    leds <= 8'h01;
   end
   else begin
     cnt <= cnt + 1;
     if (cnt > DELAY) begin
       cnt <= 0;
-      leds[7:0] <= 8'h00;
-      leds[i] <= 1'h1;
-      i = i + 1;
+      leds <= leds << 1;
+
+      i <= i + 1;
       if (i > 7) begin
-        i = 0;
+        i <= 0;
+
+        leds <= 8'h01;
       end
     end
   end
