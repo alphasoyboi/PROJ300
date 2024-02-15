@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at mkr_vidor.sv(28): always construct contains both blocking and non-blocking assignments File: C:/Users/tsmale/Documents/GitHub/PROJ300/fpga/rtl/mkr_vidor.sv Line: 28
