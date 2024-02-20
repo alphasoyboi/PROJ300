@@ -15,7 +15,7 @@ module mkr_vidor (
 	input  logic data_write_done
 );
 
-localparam int unsigned DELAY = 12000000;
+localparam int unsigned DELAY = 24000000;
 int unsigned counter = 0;
 
 logic [7:0] data = 0;
