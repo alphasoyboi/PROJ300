@@ -1,49 +1,57 @@
-module mkr_vidor #(parameter DELAY = 24000000) (
+module mkr_vidor (
   input  clk,
-  input  reset_n,
   input  sam_int_in,
   output sam_int_out,
   
-  output        sdram_clk,
-  output [11:0] sdram_addr,
-  output [1:0]  sdram_ba,
-  output        sdram_cas_n,
-  output        sdram_cke,
-  output        sdram_cs_n,
-  inout  [15:0] sdram_dq,
-  output [1:0]  sdram_dqm,
-  output        sdram_ras_n,
-  output        sdram_we_n,
-
   inout        mkr_aref,
   inout [6:0]  mkr_analog,
-  inout [14:0] mkr_gpio
+  inout [14:0] mkr_gpio,
+  
+	output logic [1:0] command,
+	output logic [21:0] data_address,
+	output logic [15:0] data_write,
+	input  logic [15:0] data_read,
+	input  logic data_read_valid,
+	input  logic data_write_done
 );
 
-logic [24:0] cnt = 0;
-logic [3:0] i = 0;
-logic [7:0] leds;
+localparam int unsigned DELAY = 12000000;
+int unsigned counter = 0;
+
+logic [7:0] data = 0;
+int unsigned state = 0;
+
+logic [7:0] leds = 0;
 assign mkr_gpio[7:0] = leds;
 
-always_ff @(posedge clk or negedge reset_n) begin
-  if (!reset_n) begin
-    cnt <= 0;
-    leds <= 8'h01;
-  end
-  else begin
-    cnt <= cnt + 1;
-    if (cnt > DELAY) begin
-      cnt <= 0;
-      leds <= leds << 1;
-
-      i <= i + 1;
-      if (i > 7) begin
-        i <= 0;
-
-        leds <= 8'h01;
+always_ff @(posedge clk) begin
+  case (state)
+    0: begin
+      data_address <= 22'h000000;
+      data_write <= {8'h00, data};
+      command <= 2'h1;
+      if (data_write_done) begin
+        state <= 1;
       end
     end
-  end
+    1: begin
+      data_address <= 22'h000000;
+      command <= 2'h2;
+      if (data_read_valid) begin
+        leds <= data_read[7:0];
+        data <= data + 1;
+        state <= 2;
+      end
+    end
+    2: begin
+      if (counter < DELAY) begin
+        counter <= counter + 1;
+      end else begin
+        counter <= 0;
+        state <= 0;
+      end
+    end
+  endcase
 end
 
 endmodule

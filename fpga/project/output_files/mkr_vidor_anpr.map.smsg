@@ -1,0 +1,2 @@
+Warning (10273): Verilog HDL warning at sdram_controller.sv(157): extended using "x" or "z" File: C:/Users/tomsm/source/repos/PROJ300/fpga/ip/sdram_controller.sv Line: 157
+Warning (10273): Verilog HDL warning at sdram_controller.sv(351): extended using "x" or "z" File: C:/Users/tomsm/source/repos/PROJ300/fpga/ip/sdram_controller.sv Line: 351

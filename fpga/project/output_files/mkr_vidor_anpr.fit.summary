@@ -1,0 +1,16 @@
+Fitter Status : Successful - Tue Feb 20 19:16:12 2024
+Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Revision Name : mkr_vidor_anpr
+Top-level Entity Name : mkr_vidor_anpr
+Family : Cyclone 10 LP
+Device : 10CL016YU256C8G
+Timing Models : Final
+Total logic elements : 234 / 15,408 ( 2 % )
+    Total combinational functions : 208 / 15,408 ( 1 % )
+    Dedicated logic registers : 126 / 15,408 ( < 1 % )
+Total registers : 126
+Total pins : 62 / 163 ( 38 % )
+Total virtual pins : 0
+Total memory bits : 0 / 516,096 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 112 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

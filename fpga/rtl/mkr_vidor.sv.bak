@@ -1,15 +1,35 @@
 module mkr_vidor #(parameter DELAY = 24000000) (
-  output logic d_out = 0,
-  input logic clk
+  input  clk,
+  input  reset_n,
+  input  sam_int_in,
+  output sam_int_out,
+  
+  output        sdram_clk,
+  output [11:0] sdram_addr,
+  output [1:0]  sdram_ba,
+  output        sdram_cas_n,
+  output        sdram_cke,
+  output        sdram_cs_n,
+  inout  [15:0] sdram_dq,
+  output [1:0]  sdram_dqm,
+  output        sdram_ras_n,
+  output        sdram_we_n,
+
+  inout        mkr_aref,
+  inout [6:0]  mkr_analog,
+  inout [14:0] mkr_gpio
 );
+
+logic [7:0] leds = 8'hFF;
+assign mkr_gpio[7:0] = leds;
 
 int unsigned cnt = 0;
 
 always_ff @(posedge clk) begin
   cnt <= cnt + 1;
-  if (cnt > DELAY) begin
+  if (cnt == DELAY) begin
     cnt <= 0;
-    d_out <= ~d_out;
+    leds <= ~leds;
   end
 end
 

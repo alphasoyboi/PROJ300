@@ -1,0 +1,35 @@
+
+State Machine - |mkr_vidor_anpr|mkr_vidor:inst|state
+Name state.00000000000000000000000000000000 state.00000000000000000000000000000010 state.00000000000000000000000000000001 
+state.00000000000000000000000000000000 0 0 0 
+state.00000000000000000000000000000001 1 0 1 
+state.00000000000000000000000000000010 1 1 0 
+
+State Machine - |mkr_vidor_anpr|as4c4m16sa_controller:inst1|sdram_controller:sdram_controller|internal_command
+Name internal_command.CMD_BURST_STOP internal_command.CMD_NO_OP internal_command.CMD_MODE_REGISTER_SET internal_command.CMD_READ internal_command.CMD_WRITE internal_command.CMD_PRECHARGE_ALL internal_command.CMD_BANK_PRECHARGE internal_command.CMD_BANK_ACTIVATE internal_command.CMD_AUTO_REFRESH 
+internal_command.CMD_BANK_ACTIVATE 0 0 0 0 0 0 0 0 0 
+internal_command.CMD_BANK_PRECHARGE 0 0 0 0 0 0 1 1 0 
+internal_command.CMD_PRECHARGE_ALL 0 0 0 0 0 1 0 1 0 
+internal_command.CMD_WRITE 0 0 0 0 1 0 0 1 0 
+internal_command.CMD_READ 0 0 0 1 0 0 0 1 0 
+internal_command.CMD_MODE_REGISTER_SET 0 0 1 0 0 0 0 1 0 
+internal_command.CMD_NO_OP 0 1 0 0 0 0 0 1 0 
+internal_command.CMD_BURST_STOP 1 0 0 0 0 0 0 1 0 
+internal_command.CMD_AUTO_REFRESH 0 0 0 0 0 0 0 1 1 
+
+State Machine - |mkr_vidor_anpr|as4c4m16sa_controller:inst1|sdram_controller:sdram_controller|destination_state
+Name destination_state.STATE_READING destination_state.STATE_WRITING destination_state.STATE_IDLE destination_state.STATE_UNINIT destination_state.STATE_PRECHARGE 
+destination_state.STATE_UNINIT 0 0 0 0 0 
+destination_state.STATE_IDLE 0 0 1 1 0 
+destination_state.STATE_WRITING 0 1 0 1 0 
+destination_state.STATE_READING 1 0 0 1 0 
+destination_state.STATE_PRECHARGE 0 0 0 1 1 
+
+State Machine - |mkr_vidor_anpr|as4c4m16sa_controller:inst1|sdram_controller:sdram_controller|state
+Name state.STATE_PRECHARGE state.STATE_WAITING state.STATE_READING state.STATE_WRITING state.STATE_IDLE state.STATE_UNINIT 
+state.STATE_UNINIT 0 0 0 0 0 0 
+state.STATE_IDLE 0 0 0 0 1 1 
+state.STATE_WRITING 0 0 0 1 0 1 
+state.STATE_READING 0 0 1 0 0 1 
+state.STATE_WAITING 0 1 0 0 0 1 
+state.STATE_PRECHARGE 1 0 0 0 0 1 
